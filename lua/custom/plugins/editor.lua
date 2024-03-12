@@ -25,17 +25,12 @@ return {
     'akinsho/toggleterm.nvim',
     version = '*',
     config = function()
-      require('toggleterm').setup {}
-
-      vim.keymap.set('n', '<M-v>', function()
-        local buf_name = vim.api.nvim_buf_get_name(0)
-
-        if buf_name == 'terminal' then
-          vim.cmd 'bdelete'
-        else
-          vim.cmd 'ToggleTerm size=40 direction=float name=terminal'
-        end
-      end, { desc = 'Open terminal' })
+      require('toggleterm').setup {
+        open_mapping = [[<c-`>]],
+        insert_mappings = true,
+        direction = 'horizontal',
+        start_in_insert = true,
+      }
     end,
   },
 
@@ -73,7 +68,7 @@ return {
         }
       end, { desc = 'Open neo-tree at current file or working directory' })
 
-      vim.keymap.set('n', '<C-`>', function()
+      vim.keymap.set('n', '<C-=>', function()
         require('neo-tree.command').execute {
           toggle = true,
         }
