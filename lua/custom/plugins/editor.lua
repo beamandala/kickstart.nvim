@@ -190,4 +190,21 @@ return {
       },
     },
   },
+
+  {
+    'folke/trouble.nvim',
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
+    opts = {},
+    config = function()
+      vim.keymap.set('n', '<leader>cd', '<cmd> TroubleToggle document_diagnostics <CR>', { desc = 'Show diagnostics for current buffer' })
+      vim.keymap.set('n', '<leader>cd', '<cmd> TroubleToggle workspace_diagnostics <CR>', { desc = 'Show diagnostics for current buffer' })
+    end,
+  },
+
+  {
+    'max397574/better-escape.nvim',
+    config = function()
+      require('better_escape').setup()
+    end,
+  },
 }
