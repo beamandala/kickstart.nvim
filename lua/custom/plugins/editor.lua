@@ -30,6 +30,7 @@ return {
         insert_mappings = true,
         direction = 'horizontal',
         start_in_insert = true,
+        size = 20,
       }
     end,
   },
@@ -111,7 +112,22 @@ return {
     'Pocco81/auto-save.nvim',
     lazy = false,
     config = function()
-      require('auto-save').setup {}
+      require('auto-save').setup {
+        -- condition = function(buf)
+        --   local fn = vim.fn
+        --   local utils = require 'auto-save.utils.data'
+        --   local mode = fn.mode()
+        --
+        --   if mode == 'n' or mode == 'no' or mode == 'nov' or mode == 'novic' then
+        --     -- Normal mode or any variation (Operator-pending, etc.)
+        --     if fn.getbufvar(buf, '&modifiable') == 1 and utils.not_in(fn.getbufvar(buf, '&filetype'), {}) then
+        --       return true -- met condition(s), can save
+        --     end
+        --   end
+        --
+        --   return false -- can't save
+        -- end,
+      }
     end,
   },
 

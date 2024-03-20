@@ -847,3 +847,5 @@ require('lazy').setup({
 -- vim: ts=2 sts=2 sw=2 et
 
 vim.keymap.set('n', '<leader>q', '<cmd>q<CR>', { desc = 'Quit shortcut' })
+
+vim.keymap.set('v', '>', '>gv', { desc = 'Indent' })
