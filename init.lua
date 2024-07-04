@@ -540,6 +540,7 @@ require('lazy').setup({
       --  - capabilities (table): Override fields in capabilities. Can be used to disable certain LSP features.
       --  - settings (table): Override the default settings passed when initializing the server.
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
+      local util = require 'lspconfig.util'
       local servers = {
         -- clangd = {},
         -- gopls = {},
@@ -551,7 +552,12 @@ require('lazy').setup({
         --    https://github.com/pmizio/typescript-tools.nvim
         --
         -- But for many setups, the LSP (`tsserver`) will work just fine
-        -- tsserver = {},
+        tsserver = {
+          filetypes = {
+            'javascript',
+            'typescript',
+          },
+        },
         --
 
         lua_ls = {
@@ -568,6 +574,8 @@ require('lazy').setup({
             },
           },
         },
+
+        --
       }
 
       -- Ensure the servers and tools above are installed
@@ -623,6 +631,7 @@ require('lazy').setup({
         -- You can use a sub-list to tell conform to run *until* a formatter
         -- is found.
         -- javascript = { { "prettierd", "prettier" } },
+        svelte = { 'prettier' },
       },
     },
   },
